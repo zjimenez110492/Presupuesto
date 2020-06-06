@@ -1,0 +1,34 @@
+<!-- una vez habiendo colcoado el boton de guardar como tipo submit y los inputs como required, 
+lo que se hace es venir a la etiqueta del formulario y por medio de ngSubmit colocar las condiciones
+de que el formulario fea valido para utilizar el metodo egregar, esto por medio de una 
+referencia local f, ES DECIR EL EVENTO DE CLICK VA ACÁ ARRIBA Y el boton se deja sin evento -->
+<form (ngSubmit)="f.form.valid && agregar()" #f="ngForm">
+  <div class="agregar">
+      <div class="agregar_contenedor">
+            <select (change)="tipoOperacion($event)" [ngClass]="{redfocus: tipo === 'egresoOperacion'}"  class="agregar_tipo" >
+              <option  value="ingresoOperacion">+</option>
+              <option  value="egresoOperacion">-</option>
+            </select>
+            <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}"
+            type="text" 
+            class="agregar_descripcion" 
+            name="descripcionInput" 
+            [(ngModel)]="descripcionInput" 
+            placeholder="Agregar Descripción" required>
+            <input 
+            [ngClass]="{redfocus: tipo === 'egresoOperacion'}"
+            type="number" 
+            class="agregar_valor" 
+            name="valorInput" 
+            [(ngModel)]="valorInput" 
+            placeholder="Valor" 
+            required>
+            <button type="submit"  class="agregar_btn"  >
+              <i
+              [ngClass]="{red: tipo === 'egresoOperacion'}" 
+              class="ion-ios-checkmark-outline" 
+              ></i>
+            </button>
+      </div>
+  </div>
+</form>
